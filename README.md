@@ -5,6 +5,9 @@ Tiny angular application to simulate set of dices rolling. Generation of stadist
 I did this application just for fun and practice with AngularJS. I would appreciate so much if you improve it!
 
 ### Libraries / Repos used
+You can check a [Live Version] here
+
+### Libraries / Repos used
   - [Angles]
   - [Angular]
   - [Bootstrap]
@@ -69,3 +72,4 @@ MIT
 [express]:http://expressjs.com
 [AngularJS]:http://angularjs.org
 [Gulp]:http://gulpjs.com
+[Live Version]:http://ismikin.zz.vc/dicesStads/app/
