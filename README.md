@@ -69,4 +69,3 @@ MIT
 [express]:http://expressjs.com
 [AngularJS]:http://angularjs.org
 [Gulp]:http://gulpjs.com
->>>>>>> c9ad6db6e90659b9b456925879de301ed8da6ac6
