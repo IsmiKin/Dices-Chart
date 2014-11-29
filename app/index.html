@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/ng-color-picker/color-picker.css" /><!-- https://github.com/joujiahe/ng-color-picker-->
+  <link rel="stylesheet" href="bower_components/dist/angular-chart.css">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body >
+  <!--<ul class="menu">
+    <li><a href="#/view1">view1</a></li>
+    <li><a href="#/view2">view2</a></li>
+  </ul>-->
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <header>
+
+  </header>
+
+<main class="row" ng-controller="MainController as main">
+
+
+
+  <div class="containerSets col-lg-8">
+    <div class="input-group  col-md-6">
+      <input type="text" class="form-control" ng-model="newset.name" min="0" placeholder="New Set">
+      <div class="input-group-btn ">
+        <button type="button" class="btn btn-primary" ng-click="main.addSet(newset)">+</button>
+      </div>
+    </div>
+    </div>
+
+
+  <div class="containerSets col-lg-8">
+
+  <div class="containerSet row" ng-repeat="actualSet in main.sets">
+
+  <div class="col-lg-10" ng-controller="SetController as set" ng-init="set.init(actualSet.name,actualSet.id)" >
+    <div  class="panel panel-default">
+      <div class="panel-heading" style="background-color:{{set.color}}">
+        <div class="row">
+          <div class="col-sm-6">
+            <h3 class="panel-title"   ng-hide="set.editing" ng-click="set.changeEditing()">{{set.name}}</h3>
+            <input type="text" class="form-control col-sm-2" ng-model="nset.name" ng-enter="set.changeName(nset)" ng-show="set.editing"    placeholder="{{set.name}}"   value="{{set.name}}" />
+          </div>
+          <div class="col-md-6" align="right">
+            <ng-color-picker class="col-md-8" selected="selected" ng-click="set.setColor()"></ng-color-picker>
+            <button type="button" class="btn btn-danger col-sm-2"><span class="glyphicon glyphicon-trash" ng-click="main.removeSet(set.id)"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row dicesSetContainer">
+        <form name="diceForm" novalidate>
+          <div class="input-group col-md-10">
+
+            <div class="input-group col-md-8">
+              <select  ng-model="newDice.faces" ng-model-options="{ getterSetter: true }" class="form-control" >
+                <option value="20" selected>d20</option>
+                <option value="12">d12</option>
+                <option value="10">d10</option>
+                <option value="8">d8</option>
+                <option value="6">d6</option>
+                <option value="4">d4</option>
+              </select>
+              <div class=" input-group-btn ">
+                <button type="button" class="btn btn-success" ng-click="set.addDice(newDice)">+</button>
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+        </div>
+
+      <div class="row">
+        <div ng-repeat="dice in set.dices" class="dicesList">
+          <div class="col-sm-1">
+            <img src="images/d{{dice.faces}}.png" height="50" width="50" ng-click="set.removeDice(dice.id)"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+  </div>
+  </div>
+
+    <form novalidate class="calculateForm" >
+      <div class="input-group  col-md-8">
+        <div class="input-group col-md-8">
+            <input type="number" class="form-control" ng-model="rolls.number" min="0" placeholder="Number of throws">
+          <div class="input-group-btn ">
+            <button type="button" class="btn btn-success" ng-click="calculateRolls(rolls.number)">Calculate</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+
+
+  <!-- Menu lateral -->
+  <aside class="col-md-4">
+
+    <h4><strong>Do you <em>like</em> this?</strong><br/></h4>
+    <strong>Then take it! .. clone it or fork it, as you want!.. and please, if you want <em>improve it!</em></strong>
+    <br/><br/>
+    <center><img src="https://octodex.github.com/images/octobiwan.jpg" width="150" ></center>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/ismikin/Dices-Chart/archive/master.zip" data-style="mega">Download</a>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/ismikin" data-style="mega">Follow @ismikin</a>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/ismikin/Dices-Chart" data-style="mega">Fork</a>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/ismikin/Dices-Chart" data-style="mega">Star</a>
+
+
+    <div class="social">
+      <div class="g-person" data-width="302" data-href="//plus.google.com/u/0/103038141685727301458" data-layout="landscape" data-rel="author"></div>
+      <div class="g-plusone" data-annotation="inline" data-width="300"></div>
+      <div class="g-plus" data-action="share"></div>
+
+      <a href="https://twitter.com/intent/tweet?button_hashtag=angularjs" class="twitter-hashtag-button" data-related="IsmiKin" data-url="http://ismikin.zz.vc/dicesStads/app/">Tweet #angularjs</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+      <a href="https://twitter.com/IsmiKin" class="twitter-follow-button" data-show-count="false">Follow @IsmiKin</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+
+  </aside>
+
+
+  <div class="row col-md-10">
+    <div class="col-lg-10 chartsContainer">
+      <canvas linechart options="options" data="chart" responsive="true"></canvas>
+    </div>
+
+    <div class="col-lg-10 chartsContainer">
+      <canvas barchart options="options" data="chart" responsive="true"></canvas>
+    </div>
+
+    <div class="col-lg-12 chartsContainer">
+      <canvas piechart options="options" data="piechart" ></canvas>
+    </div>
+
+    <div class="col-lg-12 chartsContainer">
+      <canvas polarchart options="options" data="piechart" ></canvas>
+    </div>
+
+    <div class="col-lg-12 chartsContainer">
+      <canvas doughnutchart options="options" data="piechart" ></canvas>
+    </div>
+
+  </div>
+
+
+</main>
+
+
+  <footer></footer>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/Chart.js/Chart.js"></script>
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <!-- Place this tag right after the last button or just before your close body tag. -->
+  <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+
+  <script src="bower_components/angles/angles.js"></script>
+
+  <script src="vendor/ng-color-picker/color-picker.js"></script><!-- https://github.com/joujiahe/ng-color-picker-->
+  <script src="app.js"></script>
+  <script src="SetController.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

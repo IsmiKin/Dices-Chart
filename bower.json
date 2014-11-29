@@ -1,0 +1,28 @@
+{
+  "name": "dices-chart",
+  "description": "Tiny angular application to simulate set of dices rolling",
+  "version": "1.0",
+  "homepage": "https://github.com/IsmiKin/Dices-Chart",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angles": "*",
+    "bootstrap": "~3.3.1"
+  },
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "chartjs"
+  ],
+  "authors": [
+    "Ismael Ors"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
