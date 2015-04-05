@@ -72,4 +72,4 @@ MIT
 [express]:http://expressjs.com
 [AngularJS]:http://angularjs.org
 [Gulp]:http://gulpjs.com
-[Live Version]:http://ismikin.zz.vc/dicesStads/app/
+[Live Version]:http://ismikin.website/diceschart/app/
